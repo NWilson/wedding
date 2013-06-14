@@ -1,0 +1,479 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background: white;
+    font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
+html {
+/*     height:100%; */
+}
+
+body {
+/*     position: relative; */
+/*     background:  bottom right no-repeat url(sunflower.png); */
+/*     background-size: 60%; */
+/*     min-height: 100%; */
+}
+
+#header {
+    color: #4b3722;
+    background: #fffaf4;
+    position: relative;
+    font-family: "KingthingsCalligraphica";
+    border-bottom: 1px solid #ebdfcb;
+}
+
+#nav {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    font-size:1.3em;
+    background: rgba(235,223,203,0.7);
+    border-bottom: 1px solid #ebdfcb;
+}
+
+#nav > ul > li {
+    display: inline;
+}
+#nav > ul > li:before {
+    content: "•";
+    padding: 0 0.5em;
+}
+
+#nav > ul > li:first-child:before {
+    background: url(../resources/home.png) no-repeat left bottom;
+    content: " ";
+    display: inline-block;
+    height: 18px;
+    margin-bottom: -0.1em;
+    padding: 0 0.2em 0 0;
+    width: 22px;
+}
+
+#nav > ul {
+    margin: 0 auto;
+    max-width: 46.1em;
+    padding: 0.4em 2.3em;
+    list-style: none;
+}
+
+#sunflower-back {
+   position:absolute;
+   bottom:0;
+   right: 0;
+   width:35%;
+   height:auto;
+   z-index:1;
+}
+
+
+h1 {
+    position: relative;
+    margin: 0 auto;
+    max-width: 40em;
+    padding: 2.4em 2em 0.5em;
+    z-index:2;
+    font-weight: light;
+    color: #d51d2c;
+    font-size: 1.5em;font-family: "KingthingsCalligCalligraphica"; font-weight: normal;
+    text-align: center;
+}
+
+.index h1 {
+    max-width: 20em;
+    padding: 4em 1em;
+    font-size: 3em;
+}
+
+.index  h1 #sunflower-back {
+    width: 50%;
+}
+
+h1 .ir { overflow: visible; }
+h1 .ir:before { display:none; }
+
+.index h1 > span {
+    background: no-repeat url(../resources/title.png);
+    width: 833px;
+    height: 169px;
+    display: inline-block;
+}
+.index h1 .ir { overflow: hidden; }
+.index h1 .ir:before { display:block; }
+
+
+#column {
+    max-width: 60em;
+    margin: 2em auto;
+    padding: 0 3em;
+}
+
+#column > .section {
+    background: #fffaf4;
+    font-size: 1.2em;
+    margin: 2em 0;
+    padding: 0 2em;
+
+    border: 1px solid #ebdfcb;
+/*     border: 3px solid #11b053; */
+}
+
+#column > .section > :last-child {
+    margin-bottom: 2em;
+}
+
+h2 {
+    margin: 1.53em 0 0.5em;
+    font-size: 1.3em;
+    font-family: "KingthingsCalligraphica";
+}
+
+p, ul {
+    margin: 1em 0;
+}
+
+td {
+    vertical-align: baseline;
+}
+
+.thinspace {
+    display: inline-block;
+    width: 0.1em;
+}
+
+a:link {
+    color: #2985e0;
+}
+a:visited {
+    color: #2985e0;
+}
+a:hover {
+    color: #2985e0;
+}
+a:active {
+    color: #2985e0;
+}
+
+@font-face {
+    font-family: 'KingthingsCalligraphica';
+    src: url('Kingthings_Calligraphica_Light-webfont.eot');
+    src: url('Kingthings_Calligraphica_Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Kingthings_Calligraphica_Light-webfont.woff') format('woff'),
+         url('Kingthings_Calligraphica_Light-webfont.ttf') format('truetype'),
+         url('Kingthings_Calligraphica_Light-webfont.svg#KingthingsCalligraphicaLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KingthingsCalligraphica';
+    src: url('Kingthings_Calligraphica_2-webfont.eot');
+    src: url('Kingthings_Calligraphica_2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Kingthings_Calligraphica_2-webfont.woff') format('woff'),
+         url('Kingthings_Calligraphica_2-webfont.ttf') format('truetype'),
+         url('Kingthings_Calligraphica_2-webfont.svg#KingthingsCalligraphica2Rg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KingthingsCalligCalligraphica';
+    src: url('Kingthings_Calligraphica_Italic-webfont.eot');
+    src: url('Kingthings_Calligraphica_Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Kingthings_Calligraphica_Italic-webfont.woff') format('woff'),
+         url('Kingthings_Calligraphica_Italic-webfont.ttf') format('truetype'),
+         url('Kingthings_Calligraphica_Italic-webfont.svg#KingthingsCalligCalligraphica') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

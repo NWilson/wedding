@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+/*
+ * Layout
+ */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+html {
+  background: url(bg.jpg) white;
+}
+
+body {
+  max-width: 40em;
+  margin: 0 auto;
+  position: relative;
+}

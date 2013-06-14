@@ -1,0 +1,19 @@
+README
+======
+
+The system is a complete old crock cooked up in a hurry for the wedding site. It should be baked and archived when we're done with it...
+
+Instructions
+------------
+
+Making pages is simple. We just add a file for every page. The file format is
+that either:
+
+- the page file contains PHP, specifically a PHP class with a handle() method
+  which will be called. A sample class implementing this is PageBasic.
+- the page file is assumed to be data for a PageBasic, in the following format:
+
+[title with any markup in HTML, newline]
+The content!
+
+Edit the menu.conf file directly to alter the menu.
