@@ -12,3 +12,4 @@ TODO
 * Keep tweaking/polishing style...
 * More content
 * Add password!
+* Fix narrow/mobile styles
