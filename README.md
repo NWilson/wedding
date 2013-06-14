@@ -12,4 +12,5 @@ TODO
 * Keep tweaking/polishing style...
 * More content
 * Add password!
+* Browser compat testing
 * Fix narrow/mobile styles
