@@ -100,17 +100,6 @@ html, body {
     font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
 }
 
-html {
-/*     height:100%; */
-}
-
-body {
-/*     position: relative; */
-/*     background:  bottom right no-repeat url(sunflower.png); */
-/*     background-size: 60%; */
-/*     min-height: 100%; */
-}
-
 #header {
     color: #4b3722;
     background: #fffaf4;
@@ -119,17 +108,22 @@ body {
     border-bottom: 1px solid #ebdfcb;
 }
 
+#header-top { position: relative; }
+
 #nav {
-    position: fixed;
+    position: relative;
     width: 100%;
+    top: 0;
     z-index: 3;
     font-size:1.3em;
-    background: rgba(235,223,203,0.7);
+    background: rgba(235,223,203,0.9);
     border-bottom: 1px solid #ebdfcb;
 }
 
-#nav > ul > li {
-    display: inline;
+@media only screen and (min-width: 30em) {
+    #nav > ul > li {
+        display: inline;
+    }
 }
 #nav > ul > li:before {
     content: "•";
@@ -149,7 +143,7 @@ body {
 #nav > ul {
     margin: 0 auto;
     max-width: 46.1em;
-    padding: 0.4em 2.3em;
+    padding: 0.4em 1.1em;
     list-style: none;
 }
 
@@ -174,11 +168,32 @@ h1 {
     font-size: 1.5em;font-family: "KingthingsCalligCalligraphica"; font-weight: normal;
     text-align: center;
 }
+@media only screen and (max-width: 41.75em) /* < bodge bodge bodge width of text in em! */ {
+    h1 { padding-top: 3.4em; }
+}
+
 
 .index h1 {
     max-width: 20em;
-    padding: 4em 1em;
+    padding: 4em 50px;
     font-size: 3em;
+}
+@media only screen and (max-width: 25em) {
+    .index h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media only screen and (max-width: 30em) {
+    h1 { padding-top: 0.3em; }
+    .index h1 {
+        padding: 0.3em 50px;
+    }
+}
+@media only screen and (min-width: 30em) and (min-height: 31em) {
+    #nav {
+        position: fixed;
+    }
 }
 
 .index  h1 #sunflower-back {
@@ -188,36 +203,55 @@ h1 {
 h1 .ir { overflow: visible; }
 h1 .ir:before { display:none; }
 
-.index h1 > span {
-    background: no-repeat url(../resources/title.png);
-    width: 833px;
-    height: 169px;
-    display: inline-block;
+
+@media only screen and (min-width: 933px) {
+    .index h1 > span {
+        background: no-repeat url(../resources/title.png);
+        width: 833px;
+        height: 169px;
+        display: inline-block;
+    }
+    .index h1 .ir { overflow: hidden; }
+    .index h1 .ir:before { display:block; }
 }
-.index h1 .ir { overflow: hidden; }
-.index h1 .ir:before { display:block; }
 
 
 #column {
     max-width: 60em;
     margin: 2em auto;
-    padding: 0 3em;
+    padding: 0 1.5em;
 }
 
 #column > .section {
     background: #fffaf4;
-    font-size: 1.2em;
-    margin: 2em 0;
-    padding: 0 2em;
+    margin: 1.5em 0;
+    padding: 0 1.5em;
 
     border: 1px solid #ebdfcb;
 /*     border: 3px solid #11b053; */
+}
+
+@media only screen and (min-width: 25em) {
+    #nav > ul {
+        padding: 0.4em 2.3em;
+    }
+    #column {
+        padding: 0 3em;
+    }
+    #column > .section {
+        font-size: 1.2em;
+        margin: 2em 0;
+        padding: 0 2em;
+    }
 }
 
 #column > .section > :last-child {
     margin-bottom: 2em;
 }
 
+.section > p:first-child {
+    margin-top: 2em;
+}
 h2 {
     margin: 1.53em 0 0.5em;
     font-size: 1.3em;

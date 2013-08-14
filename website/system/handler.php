@@ -9,7 +9,6 @@ require 'config.php';
 // and www.real-address.org as well as localhost/sites/mysite/ for testing).
 // The method is simple: $crop = 'mysite' above, and everything just works.
 $crop      = pathinfo(realpath('..'), PATHINFO_BASENAME);
-error_log("crop=$crop");
 $page_orig = preg_replace( "#^(.*?$crop/)?#", '', @$_GET['q']);
 $base      = preg_replace("#^((.*?$crop)?).*?$#", '$1/', @$_GET['q']);
 // NB: $base always has start and end slash (either '/' or '/.../')

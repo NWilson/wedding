@@ -22,11 +22,11 @@ class PageBasic extends PageHTML {
 ?>
 
        <div id="header" class="<?=$page?>">
+            <div id="header-top"><h1><span class="ir"><small>You are invited to celebrate the marriage of</small><br />Nicholas Wilson and Elspeth Pullinger<span></h1>
+            <img src="<?= $this->version('resources/sunflower-fffaf4.jpeg')?>" id="sunflower-back" /></div>
             <div id="nav">
                 <?= $pages->output(); ?>
             </div>
-            <h1><span class="ir"><small>You are invited to celebrate the marriage of</small><br />Nicholas Wilson and Elspeth Pullinger<span></h1>
-            <img src="<?= $this->version('resources/sunflower.png')?>" id="sunflower-back" />
         </div>
 
         <div id="column">

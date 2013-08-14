@@ -42,7 +42,7 @@ abstract class PageHTML {
         <title><?php echo $this->title.($this->title != '' ? ' « ' : '').'Nicholas and Elspeth’s wedding'; ?></title>
         <meta name="keywords" content="<?= $this->keywords ?>">
         <meta name="description" content="<?= $this->description ?>">
-        <link rel="shortcut icon" href="<?= $base; ?>favicon.ico">
+        <link rel="shortcut icon" href="<?= $this->version('favicon.png');?>">
         <link rel="stylesheet" href="<?= $this->version('design/normalize.css'); ?>"        type="text/css" media="screen">
         <link rel="stylesheet" href="<?= $this->version('design/main.css'); ?>"        type="text/css" media="screen">
         <meta name="viewport" content="width=device-width">
