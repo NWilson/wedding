@@ -161,7 +161,7 @@ h1 {
     position: relative;
     margin: 0 auto;
     max-width: 40em;
-    padding: 2.4em 2em 0.5em;
+    padding: 0.5em 2em 0.5em;
     z-index:2;
     font-weight: light;
     color: #d51d2c;
@@ -170,6 +170,9 @@ h1 {
 }
 @media only screen and (max-width: 41.75em) /* < bodge bodge bodge width of text in em! */ {
     h1 { padding-top: 3.4em; }
+}
+@media only screen and (min-width: 30em) and (min-height: 31em) {
+    h1 { padding-top: 2.4em; }
 }
 
 
@@ -272,6 +275,7 @@ td {
 }
 
 a:link {
+    text-decoration:none;
     color: #2985e0;
 }
 a:visited {

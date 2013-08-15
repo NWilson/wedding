@@ -50,6 +50,7 @@ abstract class PageHTML {
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         
 <!--         <script src="js/vendor/modernizr-2.6.2.min.js"></script> -->
+        <script type="text/javascript" src="<?= $this->version('resources/jquery-1.10.2.min.js'); ?>"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -68,7 +69,6 @@ abstract class PageHTML {
   <a href="http://www.nicholaswilson.me.uk">Boilerplate by Nicholas Wilson</a>
 </div>
 
-<script type="text/javascript" src="<?= $this->version('resources/jquery-1.4.4-plus-custom.js'); ?>"></script>
 */ ?>
 
 </body>
