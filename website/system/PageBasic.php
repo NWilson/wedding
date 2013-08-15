@@ -31,7 +31,7 @@ class PageBasic extends PageHTML {
 
         <div id="column">
             <div class="section">
-            <?= $this->data; ?>
+            <?php $lasturlcomp = $page; eval("?>".$this->data); ?>
             </div>
         </div>
 

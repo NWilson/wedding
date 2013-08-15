@@ -1,9 +1,103 @@
 Gift list
+<?php
+  if ('OK' != (include '../system/password.php')) return;
+?>
 <h2>Gift list</h2>
 
 <p>Most of all, we would like you to join us on 21st September to celebrate our marriage.</p>
 
-<p>If you would like to give a gift, you can find a gift list with John Lewis from 10 August on the <a href="http://www.johnlewisgiftlist.com">John Lewis website</a>, using list number 559927.</p>
+<p>You can find our gift list with John Lewis on the <a href="http://www.johnlewisgiftlist.com">John Lewis website</a>, using list number 559927. As we already have a lot of the things needed for our new home together, the list is perhaps smaller than other gift lists you have used. We would also be happy to receive vouchers for John Lewis (for furnishing our new home), Blackwells (for music and books) or the Royal Opera House (for fun); subscriptions for the FT Weekend and The Week magazine. If you check here nearer the time, we may well add more ideas.</p>
 
-<p>We would also really appreciate contributions for the afternoon tea following the service. If you would like to bring something, please let us know what you intend to bring.</p>
-<p><i>A form will be available here closer to the date.</i></p>
+<h2>Cakes for tea</h2>
+<p>The marriage service at Eden will be followed by afternoon tea at the church. We would be very grateful if some of our family and friends would like to contribute to the day by bringing something for the tea. If you would like to do this, please sign up here to let us know what you are bringing.
+<p>If you are local and would be able to drop your contribution at Eden on the afternoon of Friday 20th September, that would be very helpful; otherwise please take it to the back hall at Eden before the service on Saturday, pre-cut if possible. An usher will be able to point you in the right direction! If there are any problems signing up here, or you would like to bring something not on the list, please email us at <a href="mailto:rsvp@nickandelspeth.com">rsvp@nickandelspeth.com</a>. Many many thanks!
+</p>
+
+<hr />
+<?php
+  global $taken, $tcookie, $ouradditions;
+  $tcookie = '';
+  $ouradditions = false;
+  if (!array_key_exists('caketracker', $_COOKIE)) {
+    $tcookie = mt_rand(1000000,9999999);
+    setcookie('caketracker',  $tcookie);
+  } else {
+    $tcookie = $_COOKIE['caketracker'];
+  }
+?>
+<h3>I will bring:</h3>
+<?php
+
+function addchoice($choiceid, $choicetext) {
+     global $taken, $tcookie, $ouradditions;
+     $choice = array();
+     $choice['id'] = mt_rand(1000000,9999999);
+     $choice['timestamp'] = date(DATE_ISO8601);
+     $choice['personid'] = $tcookie;
+     $choice['personname'] = "FIXME";
+     $choice['choiceid'] = $choiceid;
+     $choice['choicetext'] = $choicetext;
+     $taken[] = $choice;
+$ouradditions = true;
+  mail('rsvp@nickandelspeth.com', 'Form submission on website',
+"A user submitted this item on the website:\n\n".json_encode($choice));
+}
+
+   $db = json_decode(file_get_contents('../cake.db'), true);
+   $taken = json_decode(file_get_contents('../../cakechoices.db'), true);
+
+   if (array_key_exists('othercake', $_REQUEST) && $_REQUEST['othercake'] != "") {
+     addchoice('other', $_REQUEST['othercake']);
+   }
+   if (array_key_exists('selectcake', $_REQUEST)) {
+     $c = $_REQUEST['selectcake'];
+     if (array_key_exists($c, $db))
+       addchoice($c, $db[$c]['name']);
+   }
+   if (array_key_exists('delete', $_REQUEST)) {
+     $id = $_REQUEST['delete'];
+     foreach ($taken as $key=>$val) {
+       if ($val['id'] == $id) {
+         unset($taken[$key]);
+         $ouradditions = true;
+         break;
+       }
+     }
+   }
+   if ($ouradditions) {
+     file_put_contents('../../cakechoices.db', json_encode($taken));
+   }
+
+?>
+
+<form method="POST" action="gifts">
+<select name="selectcake">
+<option selected>None...</option>
+<?php
+   foreach ($db as $id=>$cakeopt) {
+     $ntaken = 0;
+     foreach ($taken as $bring) {
+       if ($bring['choiceid'] == $id) ++$ntaken;
+     }
+     if ($cakeopt['number'] > $ntaken) {
+       echo "<option value='$id'>{$cakeopt['name']}</option>\n";
+     }
+   }
+?>
+</select>
+<p>Other (please specify):<input name="othercake" type="text"></input></p>
+<button type="submit">Save</button>
+</form>
+
+<hr />
+
+<h3>Cakes being brought:</h3>
+<ul>
+<?php
+  foreach ($taken as $bring) {
+    $delete = "";
+    if ($bring['personid'] == $tcookie) $delete = " <a href='gifts?delete={$bring['id']}'>delete</a>";
+    echo "<li>{$bring['choicetext']} <span class='cakeperson'>{$bring['personname']}</span>$delete</li>";
+  }
+?>
+</ul>

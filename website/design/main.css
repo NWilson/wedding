@@ -97,6 +97,8 @@ html, body {
     padding: 0;
     margin: 0;
     background: white;
+}
+html, body, select, button, input {
     font-family: Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif;
 }
 
@@ -146,6 +148,21 @@ html, body {
     padding: 0.4em 1.1em;
     list-style: none;
 }
+
+#nav a:link {
+    text-decoration:none;
+}
+#nav a:visited {
+    text-decoration:none;
+}
+#nav a:hover {
+    text-decoration:none;
+}
+#nav a:active {
+    text-decoration:none;
+}
+
+
 
 #sunflower-back {
    position:absolute;
@@ -275,7 +292,6 @@ td {
 }
 
 a:link {
-    text-decoration:none;
     color: #2985e0;
 }
 a:visited {
@@ -322,6 +338,29 @@ a:active {
 }
 
 
+
+
+#passwordprompt {
+    background: rgba(100, 100, 100, 0.8);
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 8;
+    padding: 0 1em;
+}
+#passwordprompt > div {
+  background: white; max-width: 30em; margin: 2em auto;
+  border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -moz-border-radius: 0.3em;
+  padding: 3em 3em 4em;
+}
+#passwordprompt form > p {
+  text-align: center;
+}
 
 
 

@@ -1,4 +1,7 @@
 Accommodation
+<?php
+  if ('OK' != (include '../system/password.php')) return;
+?>
 <h2>Accommodation</h2>
 
 <p>Cambridge offers a variety of hotels, B&amp;Bs and travel lodges. More information can be found on <a href="http://www.visitcambridge.org/accommodation">www.visitcambridge.org</a>.

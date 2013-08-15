@@ -35,10 +35,13 @@ class Menu {
       $urlname = preg_replace('/\.php$/', '', $pgname);
       $active = strcmp("$urlname",$page)==0;
       $urlname = preg_replace('/index$/','',$urlname);
+      $class = '';
+      if (array_key_exists('class', $pg))
+        $class = "class='{$pg['class']}'";
       if ($active)
         echo "<li class=\"current\">{$pg["title"]}</li> ";
       else
-        echo "<li><a href='$base$urlname'>{$pg["title"]}</a></li> ";
+        echo "<li><a href='$base$urlname' $class>{$pg["title"]}</a></li> ";
     }
     echo "</ul>";
   }
