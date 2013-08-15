@@ -25,7 +25,7 @@ Gift list
     $tcookie = $_COOKIE['caketracker'];
   }
 ?>
-<h3>I will bring:</h3>
+<h3>I will bring—</h3>
 <?php
 
 function addchoice($choiceid, $choicetext) {
@@ -34,25 +34,38 @@ function addchoice($choiceid, $choicetext) {
      $choice['id'] = mt_rand(1000000,9999999);
      $choice['timestamp'] = date(DATE_ISO8601);
      $choice['personid'] = $tcookie;
-     $choice['personname'] = "FIXME";
+     $choice['personname'] = $_REQUEST['personname'];
      $choice['choiceid'] = $choiceid;
      $choice['choicetext'] = $choicetext;
      $taken[] = $choice;
-$ouradditions = true;
-  mail('rsvp@nickandelspeth.com', 'Form submission on website',
-"A user submitted this item on the website:\n\n".json_encode($choice));
+     $ouradditions = true;
+     mail('rsvp@nickandelspeth.com', 'Form submission on website',
+"A user submitted this item on the website:\n\n".
+"Person: {$choice['personname']}\n".
+"Choice: {$choice['choicetext']}\n".
+"Time: {$choice['timestamp']}\n\n".
+"Raw data: ". json_encode($choice));
 }
 
    $db = json_decode(file_get_contents('../cake.db'), true);
    $taken = json_decode(file_get_contents('../../cakechoices.db'), true);
 
+   $canadd = array_key_exists('personname', $_REQUEST) && $_REQUEST['personname'] != "";
+   $adderr = false;
    if (array_key_exists('othercake', $_REQUEST) && $_REQUEST['othercake'] != "") {
-     addchoice('other', $_REQUEST['othercake']);
+     if ($canadd)
+       addchoice('other', $_REQUEST['othercake']);
+     else
+       $adderr = true;
    }
    if (array_key_exists('selectcake', $_REQUEST)) {
      $c = $_REQUEST['selectcake'];
-     if (array_key_exists($c, $db))
-       addchoice($c, $db[$c]['name']);
+     if (array_key_exists($c, $db)) {
+       if ($canadd)
+         addchoice($c, $db[$c]['name']);
+       else
+         $adderr = true;
+     }
    }
    if (array_key_exists('delete', $_REQUEST)) {
      $id = $_REQUEST['delete'];
@@ -65,14 +78,16 @@ $ouradditions = true;
      }
    }
    if ($ouradditions) {
+     header("Location: $page");
      file_put_contents('../../cakechoices.db', json_encode($taken));
    }
 
 ?>
 
 <form method="POST" action="gifts">
-<select name="selectcake">
-<option selected>None...</option>
+<?php if ($adderr) echo "<p style='color:red'>Please enter your name</p>";?>
+<p><span style="display:inline-block;width:7em">Your name:</span><input style="width: 22em" type="text" name='personname'></input><p>
+<select id="selectcake" name="selectcake" style="width:29em">
 <?php
    foreach ($db as $id=>$cakeopt) {
      $ntaken = 0;
@@ -84,14 +99,33 @@ $ouradditions = true;
      }
    }
 ?>
+<option value="other">Other...</option>
 </select>
-<p>Other (please specify):<input name="othercake" type="text"></input></p>
+<p><span style="display:inline-block;width:11em;padding-left:1.5em">Other (please specify):</span><input id="othercake" style="width:16.5em" name="othercake" type="text"></input></p>
 <button type="submit">Save</button>
 </form>
+<script>
+$(document).ready(function(){
+  $('#selectcake').change(function(){
+    var elt = $('#othercake');
+    var eltp = elt.parent();
+    if ($('#selectcake').val() == "other") {
+      eltp.removeClass('disabled');
+      elt.removeAttr('disabled');
+      elt.focus();
+    } else {
+      eltp.addClass('disabled');
+      elt.val('');
+      elt.attr('disabled', 'disabled');
+    }
+  });
+  $('#selectcake').trigger('change');
+});
+</script>
 
 <hr />
 
-<h3>Cakes being brought:</h3>
+<h3>Cakes being brought—</h3>
 <ul>
 <?php
   foreach ($taken as $bring) {

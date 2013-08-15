@@ -19,6 +19,11 @@ class PageBasic extends PageHTML {
   
   final public function handle() {
     global $base, $pages, $page;
+    if (isset($pages->pages[$page]['nocache'])) {
+      $expire_seconds = 1;
+      header('Cache-Control: max-age=0, no-cache, must-revalidate, proxy-revalidate');
+      header('Expires: '.date('D, d M Y H:i:s', time()+$expire_seconds).' GMT');
+    }
 ?>
 
        <div id="header" class="<?=$page?>">

@@ -278,6 +278,10 @@ h2 {
     font-family: "KingthingsCalligraphica";
 }
 
+h3 {font-size: 1.1em;
+font-weight: normal;
+font-style: italic;}
+
 p, ul {
     margin: 1em 0;
 }
@@ -362,6 +366,12 @@ a:active {
   text-align: center;
 }
 
+
+.cakeperson { font-style:italic; }
+
+
+input { box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; }
+.disabled { color: #aaaaaa; }
 
 
 
@@ -464,23 +474,6 @@ a:active {
 
 .clearfix {
     *zoom: 1;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================

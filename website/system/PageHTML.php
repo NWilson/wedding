@@ -18,8 +18,8 @@ abstract class PageHTML {
   
   public function __construct() {
     header('Content-Type: text/html; charset=UTF-8');
-    $expire_seconds = 1;
-    header("Cache-Contol: max-age=$expire_seconds;must-revalidate");
+    $expire_seconds = 120;
+    header("Cache-Control: max-age=$expire_seconds;must-revalidate");
     header('Expires: '.date('D, d M Y H:i:s', time()+$expire_seconds).' GMT');
     ob_start();
     $this->frontCover();
