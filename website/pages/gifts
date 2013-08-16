@@ -86,8 +86,8 @@ function addchoice($choiceid, $choicetext) {
 
 <form method="POST" action="gifts">
 <?php if ($adderr) echo "<p style='color:red'>Please enter your name</p>";?>
-<p><span style="display:inline-block;width:7em">Your name:</span><input style="width: 22em" type="text" name='personname'></input><p>
-<select id="selectcake" name="selectcake" style="width:29em">
+<p><span style="display:inline-block;width:7em">Your name:</span><input style="width: 22em;max-width:100%" type="text" name='personname'></input><p>
+<select id="selectcake" name="selectcake" style="width:29em;max-width:100%">
 <?php
    foreach ($db as $id=>$cakeopt) {
      $ntaken = 0;
@@ -101,7 +101,7 @@ function addchoice($choiceid, $choicetext) {
 ?>
 <option value="other">Other...</option>
 </select>
-<p><span style="display:inline-block;width:11em;padding-left:1.5em">Other (please specify):</span><input id="othercake" style="width:16.5em" name="othercake" type="text"></input></p>
+<p style="padding-left:1.5em"><span style="display:inline-block;width:11em">Other (please specify):</span><input id="othercake" style="width:16.5em;max-width:100%" name="othercake" type="text"></input></p>
 <button type="submit">Save</button>
 </form>
 <script>
