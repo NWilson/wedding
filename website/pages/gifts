@@ -20,7 +20,7 @@ Gift list
   $ouradditions = false;
   if (!array_key_exists('caketracker', $_COOKIE)) {
     $tcookie = mt_rand(1000000,9999999);
-    setcookie('caketracker',  $tcookie);
+    setcookie('caketracker',  $tcookie, time()+60*60*24*356);
   } else {
     $tcookie = $_COOKIE['caketracker'];
   }
@@ -39,12 +39,18 @@ function addchoice($choiceid, $choicetext) {
      $choice['choicetext'] = $choicetext;
      $taken[] = $choice;
      $ouradditions = true;
-     mail('rsvp@nickandelspeth.com', 'Form submission on website',
-"A user submitted this item on the website:\n\n".
+$mail = "A user submitted this item on the website:\n\n".
 "Person: {$choice['personname']}\n".
 "Choice: {$choice['choicetext']}\n".
 "Time: {$choice['timestamp']}\n\n".
-"Raw data: ". json_encode($choice));
+"Raw data: ". json_encode($choice);
+     $rv = mail('rsvp@nickandelspeth.com', 'Form submission on website',
+                $mail,
+     'From: mailer@nickandelspeth.com' . "\r\n" .
+'Reply-To: mailer@nickandelspeth.com'. "\r\n" .
+'X-Mailer: PHP/' . phpversion());
+    if (!$rv) error_log("Failed to send mail: \n\n----- \n$mail\n-----\n\n");
+    file_put_contents('../mail_log', "$mail\n\n-----\n",  FILE_APPEND);
 }
 
    $db = json_decode(file_get_contents('../cake.db'), true);
@@ -71,6 +77,7 @@ function addchoice($choiceid, $choicetext) {
      $id = $_REQUEST['delete'];
      foreach ($taken as $key=>$val) {
        if ($val['id'] == $id) {
+         file_put_contents('../mail_log', "A user deleted this item on the website:\n\nRaw data: ".json_encode($taken[$key])."\n\n-----\n",  FILE_APPEND);
          unset($taken[$key]);
          $ouradditions = true;
          break;
@@ -135,3 +142,4 @@ $(document).ready(function(){
   }
 ?>
 </ul>
+

@@ -28,8 +28,8 @@ abstract class PageHTML {
     $this->backCover();
     $page = ob_get_contents();
     ob_end_clean();
-    //echo $page;
-    Conneg::gzoutput($page);
+    echo $page;
+    //Conneg::gzoutput($page);
   }
   
   private function frontCover() {

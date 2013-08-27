@@ -3,8 +3,8 @@
   $auth = false;
   $authmsg = '';
   if (array_key_exists('password', $_POST)) {
-    if ($_POST['password'] == trim(file_get_contents('../../password-file'))) {
-      setcookie('password', sha1('myfairlyrandomsalt:'.$_POST['password']));
+    if (strtolower($_POST['password']) == strtolower(trim(file_get_contents('../../password-file')))) {
+      setcookie('password', sha1('myfairlyrandomsalt:'.$_POST['password']), time()+60*60*24*356);
       $auth = true;
     } else {
       $authmsg = '<p style="color:red">That doesn\'t seem to be the correct password.</p>';
